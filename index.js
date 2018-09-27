@@ -13,7 +13,11 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 
 server.post('/get-movie-details', (req, res) => {
-
+    
+    return res.json({
+                fulfillmentText: req.body.queryResult,
+                source: 'get-movie-details'
+    });
     const movieToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie ? req.body.queryResult.parameters.movie : 'Gladiator';
     const reqUrl = encodeURI(`http://www.omdbapi.com/?t=${movieToSearch}&apikey=d5dbbae7`);
     http.get(reqUrl, (responseFromAPI) => {
