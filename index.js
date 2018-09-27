@@ -28,7 +28,7 @@ server.post('/get-movie-details', (req, res) => {
 
             return res.json({
                 speech: dataToSend,
-                fulfillmentText: speech,
+                fulfillmentText: dataToSend,
                 displayText: dataToSend,
                 source: 'get-movie-details'
             });
@@ -36,7 +36,7 @@ server.post('/get-movie-details', (req, res) => {
     }, (error) => {
         return res.json({
             speech: 'Something went wrong!',
-            fulfillmentText: speech,
+            fulfillmentText: 'Something went wrong!',
             displayText: 'Something went wrong!',
             source: 'get-movie-details'
         });
